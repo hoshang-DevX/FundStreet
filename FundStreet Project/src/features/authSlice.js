@@ -2,16 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { sendOtp , verifyOtp , logInWithPassword}  from './authThunks'
 
 
-// A function that accepts an initial state, an object full of reducer functions, and a "slice name", 
-// and automatically generates action creators and action types that correspond to the reducers and state.
-
 const initialState = {
     isAuthenticated : false,
     userToken : null,
     userInfo : null,
     loading : false,
     error : null, 
-    // logInMethod : 'OTP',
     otpSent : false,
     otpVerified : false
 }
@@ -79,23 +75,8 @@ const authSlice = createSlice({
             state.error = action.payload
         })
 
-        // for signing Up a new user
-        // .addCase(signUp.pending , (state) =>{
-        //     state.error = null,
-        //     state.loading = true
-        // })
-        // .addCase(signUp.fulfilled , (state,action) =>{
-        //     state.loading = false,
-        //     state.userInfo = action.payload.user,
-        //     state.isAuthenticated = true,
-        //     state.userToken = action.payload.token
-        // })
-        // .addCase(signUp.rejected , (state,action) =>{
-        //     state.loading = false,
-        //     state.error = action.payload
-        // })
-        
 
     }
 })
-export default authSlice
+export const {logOut} = authSlice.actions
+export default authSlice.reducer

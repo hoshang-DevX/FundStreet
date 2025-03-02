@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from 'axios'
+import axios from "axios";
 // we have  sendOtp, verifyOtp, logInWithPassword, signUp
 
         // sendOTP format
@@ -28,52 +28,63 @@ import axios from 'axios'
         //     "status_code": 200
         // }        
 
+const baseurl = import.meta.env.VITE_PUBLIC_BASE_URL
 
-const sendOtp = createAsyncThunk(
-    "auth/sendOtp", async (phoneNumber,{rejectWithValue}) =>{
+export const sendOtp = createAsyncThunk(
+    "auth/sendOtp", async (mobile_no,{rejectWithValue}) =>{
         try {
-            const response = await axios.post("  ",{phoneNumber})
+            const response = await axios.post(`${baseurl}/api/v1/otp_user_auth`,{ mobile_no})
+            const {data} = response.data
+            if(data?.token){
+                sessionStorage.setItem("token",data.token)
+            }
+
             return response.data                    // get this checked that is this returned data type is fine ? 
         } catch (error) {
-            rejectWithValue(error.response.value)
+            return rejectWithValue(error.response.value)
         }
     }
 )
-const verifyOtp = createAsyncThunk(
-    "auth/verifyOtp", async({phoneNumber,otp} , {rejectWithValue}) =>{
+export const verifyOtp = createAsyncThunk(
+    
+    "auth/verifyOtp", async({mobile_no ,otpString},{rejectWithValue}) =>{
         try {
-            const response = await axios.post(" /api/v1/verifyOtp", {phoneNumber,otp} )
+            const token = sessionStorage.getItem("token")
+            const headers = token ? {Authorization : token} : {}    // also expected by the API
+
+            const response = await axios.post(`${baseurl}/api/v1/otp_verification`, { mobile_no , otp : otpString} , {headers} )
+            
             const {status , message , data} =  response.data
             sessionStorage.setItem( "authToken" , data.token)        // requires key and value
             return {user : data.credentials , token : data.token , message, status}
         } catch (error) {
-            rejectWithValue(error.response?.data?.message || 'Error Verifying the OTP' )
+            console.error("API Error:", error.response?.data || error.message);
+            return rejectWithValue(error.response?.data?.message || 'Error Verifying the OTP' )
         }
     }
 )
 
 // next thunk for logInWithPassword
-const logInWithPassword = createAsyncThunk(
-    "auth/logInWithPassword", async({phoneNumber,password},{rejectWithValue})=>{
+export const logInWithPassword = createAsyncThunk(
+    "auth/logInWithPassword", async({mobile_no,password},{rejectWithValue})=>{
         try {
-            const response = await axios.post(" " , {phoneNumber,password})
-            const {status, message, data} = response.data
+            const remember_me = false
+            console.log('sending request',mobile_no,password);            // check
+            const response = await axios.post(`${baseurl}/api/v1/password_user_auth`, {mobile_no,password,remember_me})
+            
+
+            
+            console.log('getting the data', response.data);
+            const { data,status, message} = response.data
             sessionStorage.setItem("token",data.token)
 
             return {user : data.credentials , token : data.token , message , status}
+            // return response.data
         } catch (error) {
-            rejectWithValue(error.response?.data?.message || 'Login Failed' )
+            console.log('error hogya',error.data?.response?.message || "LOGIN failed" );
+           return rejectWithValue(error.response?.data?.message || 'Login Failed' )
         }
     }
 )
-
- // thunk for signUp
-// const signUp = createAsyncThunk(
-//     "auth/signUp" , async({})
-// )
-
-
-
-
 
 export default {sendOtp,verifyOtp,logInWithPassword}

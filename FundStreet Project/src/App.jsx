@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Header from "./components/header/Header"
 import LogInForm from "./components/loginPage/logInForm"
+import PasswordOtpForm from "./components/loginPage/PasswordOtpForm"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
          <Route path="/" element = {<Home/>}  />  
          <Route path="/about" element = {<About/>} />
          <Route path = "/login" element = {<LogInForm/>} />
+         <Route path = '/passwordOtpForm' element = {< PasswordOtpForm/>} />
       </Routes>
    </Router>
 
