@@ -87,7 +87,7 @@ const handleLogInWithPassword = async()=>{
             <>
 
     
-      <form className="w-full max-h-full max-w-[100%] sm:max-w-[50%] h-[60%] border-solid border-[10px] p-8 border-green-600 rounded-[32px] shadow-2xl shadow-slate-500 mt-40  "
+      <form className="w-full max-h-full max-w-[100%] sm:max-w-[50%] h-[60%] border-solid border-[10px] p-8 border-green-600 rounded-[32px] shadow-2xl shadow-slate-500 mt-14  "
         onSubmit={(e) => e.preventDefault()}>
       <header className="flex flex-col">
         <h2  className="flex flex-wrap font-semibold font-sans text-lg sm:text-xl md:text-3xl justify-center gap-[4px]" >Welcome to 

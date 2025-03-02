@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Header from "./components/header/Header";
 import Footer from "./components/Footer/Footer";
+import LogInForm from "./components/loginPage/logInForm";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/login" element={< LogInForm/>} />
           </Routes>
         </main>
 
