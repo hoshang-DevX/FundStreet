@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HeaderLeft from "./HeaderLeft";
 import SearchBar from "./SearchBar";
@@ -6,8 +6,24 @@ import SearchBar from "./SearchBar";
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    // Function to close menu when clicking outside
+    const handleClickOutside = (event) => {
+      if (menuOpen && !event.target.closest(".mobile-menu") && !event.target.closest(".menu-btn")) {
+        setMenuOpen(false);
+      }
+    };
+    
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [menuOpen]);
+
   return (
-    <header className="bg-white shadow-md fixed top-0 w-full z-10">
+    <header className="bg-white shadow-md fixed top-0 w-full z-10 ">
       <div className="flex items-center justify-between px-6 lg:px-16 h-[80px]">
         {/* Left Logo */}
         <HeaderLeft />
@@ -35,7 +51,7 @@ function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl"
+          className="md:hidden text-2xl menu-btn "
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? "✖" : "☰"}
@@ -44,7 +60,7 @@ function Header() {
 
       {/* Mobile Navigation Menu (Dropdown) */}
       {menuOpen && (
-        <nav className="md:hidden bg-white shadow-md absolute w-full left-0 top-[80px]">
+        <nav className="md:hidden bg-white shadow-md absolute w-full left-0 top-[80px] ">
           <ul className="flex flex-col items-center py-4 space-y-4 text-green-600 font-semibold">
             <li>
               <Link to="/" onClick={() => setMenuOpen(false)}>
