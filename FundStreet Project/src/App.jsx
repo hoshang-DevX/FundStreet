@@ -12,7 +12,7 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         
-        <Header />
+        <Header/>
         <main className="flex-grow pt-24 px-6 bg-gradient-to-r from-[#FFFFFF] via-[#CFF5E7] to-[#FEFFFF]">
           <Routes>
             <Route path="/" element={<Home />} />
