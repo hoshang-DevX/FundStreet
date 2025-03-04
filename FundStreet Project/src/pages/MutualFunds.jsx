@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMutualFunds } from "../features/MutualFunds/mutualFundsThunk";
+import { fetchCategoryFunds } from "../features/MutualFunds/mutualFundsThunk";
 import { useNavigate } from "react-router-dom";
 
 function MutualFunds() {
@@ -9,15 +9,20 @@ function MutualFunds() {
   const { loading, error } = useSelector((state) => state.mutualFunds);
 
   useEffect(() => {
-    dispatch(fetchMutualFunds()); // Fetch all mutual funds initially
+    console.log('category funds ko fetch krne jara hai')
+    dispatch(fetchCategoryFunds()); // Fetch all mutual funds initially
   }, [dispatch]);
 
   // Categories
   const categories = ["Large Cap", "Mid Cap", "Small Cap"];
 
+  // const categories = 
+
   // Navigate to category page
   const handleCategoryClick = (category) => {
+    console.log('moving to large cap fund page')
     navigate(`/mutual-funds/${category.toLowerCase().replace(/\s+/g, "-")}`);
+    console.log('inside large cap fund page')
   };
 
   return (

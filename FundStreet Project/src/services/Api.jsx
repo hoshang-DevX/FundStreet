@@ -6,11 +6,11 @@ const api = axios.create({
 
 export const getData = () => {
   return api.get(
-    "/api/v1/amfi_mf_list/"
+    "/api/v1/amfi_mf_list"
   );
 };
 export const getCategoryData = () => {
   return api.get(
-    "/api/v1/amfi_mf_list/"
+    "/api/v1/amfi_mf_list"
   );
 };

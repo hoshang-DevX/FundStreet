@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategoryFunds } from "../../features/MutualFunds/mutualFundsThunk";
+import { fetchMutualFunds } from "../../features/MutualFunds/mutualFundsThunk";
 import { useParams } from "react-router-dom";
 
 function CategoryFunds() {
@@ -9,7 +9,7 @@ function CategoryFunds() {
   const { funds, loading, error } = useSelector((state) => state.mutualFunds);
 
   useEffect(() => {
-    dispatch(fetchCategoryFunds(category)); // Fetch funds for this category
+    dispatch(fetchMutualFunds(category)).unwrap(); // Fetch funds for this category
   }, [dispatch, category]);
 
   return (
