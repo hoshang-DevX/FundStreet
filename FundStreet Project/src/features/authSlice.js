@@ -23,6 +23,7 @@ const authSlice = createSlice({
             state.otpSent = false,
             state.otpVerified = false,
             state.isAuthenticated = false
+            localStorage.removeItem('token')
         }
     },
 
@@ -48,11 +49,13 @@ const authSlice = createSlice({
             state.error = null // to clear any previous error states
         })
         .addCase(verifyOtp.fulfilled , (state,action) =>{
+            console.log('before :',state.isAuthenticated)
             state.loading = false,
             state.isAuthenticated = true,
             state.otpVerified = true,
             state.userToken = action.payload.token,
             state.userInfo = action.payload.user 
+            console.log('after : ' , state.isAuthenticated)
         })
         .addCase(verifyOtp.rejected , (state,action) =>{
             state.loading = false,
