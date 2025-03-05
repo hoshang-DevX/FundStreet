@@ -1,6 +1,32 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// we have  sendOtp, verifyOtp, logInWithPassword, logout
+// we have  sendOtp, verifyOtp, logInWithPassword, signUp
+
+        // sendOTP format
+// {
+//     "status": true,
+//     "message": "Successfully logged in to the Dashboard.",
+//     "data": {
+//         "credentials": "+916006641324",
+//         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoibG9naW4iLCJjcmVhdGlvbl90aW1lIjoxNzQwNTA3Mjk4LjAyODQzOSwiZXhwaXJ5IjoxNzQwNTI1Mjk4LjAyODQ0LCJlbWFpbCI6bnVsbCwibW9iaWxlX251bWJlciI6Iis5MTYwMDY2NDEzMjQifQ.4hqAPhzxODUAVcBhJThLX2YSaLLnN-I2v4JHJ_jXAXs",
+//         "user_id": 714,
+//         "questionnaire_filled": false
+//     },
+//     "status_code": 200
+// }
+
+        // verify OTP Format
+        // {
+        //     "status": true,
+        //     "message": "Successfully logged in to the Dashboard.",
+        //     "data": {
+        //         "credentials": "+916006641324",
+        //         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoibG9naW4iLCJjcmVhdGlvbl90aW1lIjoxNzQwNTA3Mjk4LjAyODQzOSwiZXhwaXJ5IjoxNzQwNTI1Mjk4LjAyODQ0LCJlbWFpbCI6bnVsbCwibW9iaWxlX251bWJlciI6Iis5MTYwMDY2NDEzMjQifQ.4hqAPhzxODUAVcBhJThLX2YSaLLnN-I2v4JHJ_jXAXs",
+        //         "user_id": 714,
+        //         "questionnaire_filled": false
+        //     },
+        //     "status_code": 200
+        // }        
 
 const baseurl = import.meta.env.VITE_PUBLIC_BASE_URL
 
@@ -29,7 +55,7 @@ export const verifyOtp = createAsyncThunk(
             const response = await axios.post(`${baseurl}/api/v1/otp_verification`, { mobile_no , otp : otpString} , {headers} )
             
             const {status , message , data} =  response.data
-            localStorage.setItem( "token" , data.token)        // requires key and value
+            localStorage.setItem( "authToken" , data.token)        // requires key and value
             return {user : data.credentials , token : data.token , message, status}
         } catch (error) {
             console.error("API Error:", error.response?.data || error.message);

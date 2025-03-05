@@ -21,7 +21,7 @@ function HeaderRight() {
           </Link>
         </div>
         <div>
-          <Link to="/about" className="font-bold text-green-600">
+          <Link to="/mutual-funds" className="font-bold text-green-600">
             {" "}
             Mutual Funds{" "}
           </Link>
@@ -30,7 +30,7 @@ function HeaderRight() {
           <Link to="/login" className="font-bold text-green-600">
             {" "}
             logIn / SignUp{" "}
-          </Link> 
+          </Link>
         </div>
       </div>
       <Outlet />
