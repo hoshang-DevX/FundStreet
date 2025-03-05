@@ -1,11 +1,12 @@
 import  { useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer,toast } from "react-toastify";
 
 import {verifyOtp} from '../../features/authThunks'
 import {sendOtp} from '../../features/authThunks'
 import {logInWithPassword} from '../../features/authThunks'
+
 
 import OTPInput from "./OTPInput";
 import PasswordInput from "./PasswordInput";
@@ -19,9 +20,11 @@ const [otp,setOtp]  = useState(Array(6).fill(''))      // reqd array in OTPInput
 const [password,setPassword] = useState('')
 const [isLogInWithPassword, setIsLogInWithPassword] = useState(false); 
 const[showPasswordOtpForm,setShowPasswordOtpForm] = useState(false) 
+
   
   const dispatch = useDispatch();
   const navigate = useNavigate()
+ 
 
   const handleSendOtp = async() =>{
     console.log("send Otp API call triggered ");        //check
@@ -51,7 +54,6 @@ const[showPasswordOtpForm,setShowPasswordOtpForm] = useState(false)
    try{ 
         const otpString = otp.join('')      // because the "otp" was in array 
         await dispatch(verifyOtp({mobile_no,  otpString })).unwrap()
-        
         navigate('/')
         toast('Login Successful !!',{type : 'success',autoClose : 2000})
 }
