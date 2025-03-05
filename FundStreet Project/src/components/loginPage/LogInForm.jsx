@@ -1,12 +1,11 @@
 import  { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer,toast } from "react-toastify";
 
 import {verifyOtp} from '../../features/authThunks'
 import {sendOtp} from '../../features/authThunks'
 import {logInWithPassword} from '../../features/authThunks'
-
 
 import OTPInput from "./OTPInput";
 import PasswordInput from "./PasswordInput";
@@ -20,11 +19,9 @@ const [otp,setOtp]  = useState(Array(6).fill(''))      // reqd array in OTPInput
 const [password,setPassword] = useState('')
 const [isLogInWithPassword, setIsLogInWithPassword] = useState(false); 
 const[showPasswordOtpForm,setShowPasswordOtpForm] = useState(false) 
-
   
   const dispatch = useDispatch();
   const navigate = useNavigate()
- 
 
   const handleSendOtp = async() =>{
     console.log("send Otp API call triggered ");        //check
@@ -54,6 +51,7 @@ const[showPasswordOtpForm,setShowPasswordOtpForm] = useState(false)
    try{ 
         const otpString = otp.join('')      // because the "otp" was in array 
         await dispatch(verifyOtp({mobile_no,  otpString })).unwrap()
+        
         navigate('/')
         toast('Login Successful !!',{type : 'success',autoClose : 2000})
 }
@@ -89,7 +87,7 @@ const handleLogInWithPassword = async()=>{
             <>
 
     
-      <form className="w-full max-h-full max-w-[100%] sm:max-w-[50%] h-[60%] border-solid border-[10px] p-8 border-green-600 rounded-[32px] shadow-2xl shadow-slate-500 mt-14  "
+      <form className="w-full max-h-full max-w-[100%] sm:max-w-[50%] h-[60%] border-solid border-[4px] p-8 border-green-600 rounded-[32px] shadow-2xl shadow-slate-500 mt-14 bg-white  "
         onSubmit={(e) => e.preventDefault()}>
       <header className="flex flex-col">
         <h2  className="flex flex-wrap font-semibold font-sans text-lg sm:text-xl md:text-3xl justify-center gap-[4px]" >Welcome to 
@@ -103,6 +101,7 @@ const handleLogInWithPassword = async()=>{
                     <label htmlFor="mobile_no">Phone </label>
                 
                     <input
+
                         type="tel"
                         value={mobile_no}
                         pattern="[0-9]{10}"

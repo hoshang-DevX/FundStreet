@@ -1,19 +1,10 @@
 import { useState, useEffect } from "react";
-import { useSelector,useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import HeaderLeft from "./HeaderLeft";
 import SearchBar from "./SearchBar";
-import { logOut } from "../../features/authSlice";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const isLoggedIn = useSelector(state => state.auth.isAuthenticated)
-  console.log('isAuthecticated status', isLoggedIn)
-  const dispatch = useDispatch()
-
-  function handleLogOut (){
-    dispatch(logOut())
-  }
 
   useEffect(() => {
     // Function to close menu when clicking outside
@@ -53,17 +44,9 @@ function Header() {
           <Link to="/mutual-funds" className="hover:text-green-800">
             Mutual Funds
           </Link>
-          { isLoggedIn ? 
-            (<button onClick={handleLogOut} className="font-bold text-green-600">
-                {" "}
-                logOut{" "}
-            </button> )
-          :
-          ( <Link to="/login" className="font-bold text-green-600">
-                {" "}
-                  logIn / SignUp{" "}
-            </Link> )
-            }
+          <Link to="/login" className="hover:text-green-800">
+            Log In / Sign Up
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -95,17 +78,9 @@ function Header() {
               </Link>
             </li>
             <li>
-            { isLoggedIn ? 
-            (<button onClick={handleLogOut} className="font-bold text-green-600">
-                {" "}
-                logOut{" "}
-            </button> )
-          :
-          ( <Link to="/login" className="font-bold text-green-600">
-                {" "}
-                  logIn / SignUp{" "}
-            </Link> )
-            }
+              <Link to="/login" onClick={() => setMenuOpen(false)}>
+                Log In / Sign Up
+              </Link>
             </li>
           </ul>
         </nav>
