@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HeaderLeft from "./HeaderLeft";
 import SearchBar from "./SearchBar";
 import { logOut } from "../../features/authSlice";
+
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,6 +15,7 @@ function Header() {
   function handleLogOut (){
     dispatch(logOut())
   }
+
 
   useEffect(() => {
     // Function to close menu when clicking outside
@@ -64,6 +66,7 @@ function Header() {
                   logIn / SignUp{" "}
             </Link> )
             }
+
         </nav>
 
         {/* Mobile Menu Button */}
