@@ -98,9 +98,17 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link to="/login" onClick={() => setMenuOpen(false)}>
-                Log In / Sign Up
-              </Link>
+            { isLoggedIn ? 
+            (<button onClick={handleLogOut} className="font-bold text-green-600">
+                {" "}
+                logOut{" "}
+            </button> )
+          :
+          ( <Link to="/login" className="font-bold text-green-600">
+                {" "}
+                  logIn / SignUp{" "}
+            </Link> )
+            }
             </li>
           </ul>
         </nav>
