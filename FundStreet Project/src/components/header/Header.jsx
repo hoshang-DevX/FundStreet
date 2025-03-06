@@ -56,12 +56,12 @@ function Header() {
             Mutual Funds
           </Link>
           { isLoggedIn ? 
-            (<button onClick={handleLogOut} className="font-bold text-green-600">
+            (<button onClick={handleLogOut} className="font-bold text-green-600 underline ">
                 {" "}
-                logOut{" "}
+                logout{" "}
             </button> )
           :
-          ( <Link to="/login" className="font-bold text-green-600">
+          ( <Link to="/login" className="font-bold text-green-600 underline ">
                 {" "}
                   logIn / SignUp{" "}
             </Link> )
@@ -99,12 +99,12 @@ function Header() {
             </li>
             <li>
             { isLoggedIn ? 
-            (<button onClick={handleLogOut} className="font-bold text-green-600">
+            (<button onClick={handleLogOut} className="font-bold text-green-600 underline ">
                 {" "}
-                logOut{" "}
+                logout{" "}
             </button> )
           :
-          ( <Link to="/login" className="font-bold text-green-600">
+          ( <Link to="/login" className="font-bold text-green-600 underline ">
                 {" "}
                   logIn / SignUp{" "}
             </Link> )

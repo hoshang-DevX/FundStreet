@@ -1,6 +1,18 @@
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import SIPCalculator from "../components/mutualFunds/SIPCalculator";
 
+
 function Home() {
+  const navigate = useNavigate()
+
+  const isLoggedIn = useSelector(state => state.auth.isAuthenticated)
+  console.log(isLoggedIn)
+
+   const handleGetStarted =() => {
+    { isLoggedIn ? navigate('/mutual-funds') : navigate('/login') }
+  }
+  
   return (
     <div className="text-gray-900">
       {/* Hero Section */}
@@ -11,7 +23,9 @@ function Home() {
         <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
           Your trusted platform for investing in mutual funds with ease and confidence.
         </p>
-        <button className="mt-6 px-8 py-4 bg-white text-green-700 font-semibold rounded-lg shadow-md hover:bg-gray-200 hover:scale-105 transition-all duration-300">
+        <button className="mt-6 px-8 py-4 bg-white text-green-700 font-semibold rounded-lg shadow-md hover:bg-gray-200 hover:scale-105 transition-all duration-300"
+          onClick = {handleGetStarted}
+        >
           Get Started
         </button>
       </section>
@@ -52,7 +66,7 @@ function Home() {
       </section>
 
       {/* Investment Calculator Section */}
-      <section className="py-20 px-6 max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center justify-around gap-8">
+      <section className=" max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center justify-around gap-8">
         {/* New Heading and Description */}
         <div className="text-center md:text-left max-w-lg">
           <h2 className="text-3xl font-semibold text-green-700">
@@ -64,13 +78,13 @@ function Home() {
         </div>
 
         {/* SIP Calculator Component */}
-        <div className="bg-white p-8 rounded-xl shadow-lg">
+        <div className="bg-white w-[80%] md:w-[60%] p-8 rounded-xl shadow-lg">
           <SIPCalculator />
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-[#52be93] py-20 px-6 text-white rounded-3xl max-w-7xl mx-auto mb-12 shadow-lg">
+      <section className="bg-[#52be93] py-20 px-6 text-white rounded-3xl max-w-7xl mx-auto mb-12 mt-12 shadow-lg">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
           What Our Users Say
         </h2>

@@ -51,7 +51,7 @@ return(
             onKeyDown={(e) => handleBackSpace(e,index)}
             
 
-            className="w-6 h-8 sm:w-6 sm:h-8 md:w-8 md:h-10 lg:w-10 lg:h-12 bg-slate-100 border-solid border-2 border-green-800 rounded-lg text-center  "
+            className="w-10 h-12 md:w-10 md:h-12 lg:w-12 lg:h-14 bg-slate-100 border-solid border-2 border-green-800 rounded-lg text-center  "
             // w-12  h-12
         />))
     }

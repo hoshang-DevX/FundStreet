@@ -64,8 +64,13 @@ export const fetchCategoryFunds = createAsyncThunk(
       if (!response.data || !response.data.data) {
         throw new Error("Invalid API response");
       }
+      const {data} = response.data
+      const categories = response.data.data.map(item => item.id); 
+      console.log('categories',categories)
 
-      return response.data.data;
+      return { categories,data }; 
+      
+      
 
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to fetch mutual funds");
