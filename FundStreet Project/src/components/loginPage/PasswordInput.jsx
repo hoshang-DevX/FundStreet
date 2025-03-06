@@ -29,7 +29,7 @@ const handleChange=(e)=>{
   return (
     <div>
         <div className="flex justify-center" >
-                <label htmlFor="Password">Password</label>
+                <label htmlFor="Password" >Password</label>
                 <input
                     type="password"
                     placeholder="Enter Password"

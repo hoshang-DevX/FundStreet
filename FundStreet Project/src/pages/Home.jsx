@@ -16,7 +16,12 @@ function Home() {
   return (
     <div className="text-gray-900">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#52be93] to-emerald-700 text-white text-center py-20 px-6 rounded-3xl shadow-xl">
+      <section className=" relative z-10 bg-gradient-to-r from-[#52be93] to-emerald-700 text-white text-center py-20 px-6 rounded-3xl shadow-xl">
+      <video src="/Video.mp4" autoPlay muted playsInline loop={true} className="absolute top-0 left-0 w-full h-full object-cover z-0 " />
+      
+
+      <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-0"></div>
+        <div className="relative z-10" >
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 animate-fade-in">
           Welcome to <span className="text-yellow-300">FundStreet</span>
         </h1>
@@ -28,6 +33,7 @@ function Home() {
         >
           Get Started
         </button>
+        </div>
       </section>
 
       {/* Why Choose Us Section */}

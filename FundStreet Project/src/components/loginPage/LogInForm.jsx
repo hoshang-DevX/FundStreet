@@ -101,7 +101,7 @@ const handleLogInWithPassword = async()=>{
       </header>
         <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4 " >
-                <div className="flex mt-8 sm:mt-16 justify-center " >
+                <div className="flex mt-8 sm:mt-16 align-middle justify-center " >
                     <label htmlFor="mobile_no">Phone </label>
                 
                     <input
@@ -112,7 +112,7 @@ const handleLogInWithPassword = async()=>{
                         required
                         onChange={(e) => setMobile_no(e.target.value)}
                         placeholder="Enter Phone Number"
-                        className="border-solid border-[2px] rounded-lg ml-2  "
+                        className="border-solid border-[2px] border-green-700 w-[200px] h-[30px] rounded-md ml-2  "
                     />
 
                 </div>
