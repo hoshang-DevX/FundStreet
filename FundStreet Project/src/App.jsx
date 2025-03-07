@@ -5,7 +5,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/Footer/Footer";
 import MutualFunds from "./pages/MutualFunds"
 import CategoryFunds from "./components/mutualFunds/CategoryFunds"
-import { LogInForm } from "./components/loginPage/logInForm";
+import { LogInForm }  from "./components/loginPage/logInForm.jsx";
 
 // import TopMovingBanner from "./components/MovingBanner/TopMovingBanner";
 
