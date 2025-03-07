@@ -1,11 +1,10 @@
 import { useState } from "react"
+import PropTypes from 'prop-types'
 
-// eslint-disable-next-line react/prop-types
 function PasswordInput({onValidPassword}) {
 const [password,setPassword] = useState("");    // seedha passowrd ko password mai daalne ke bajaye ek func ke through  daalenge jo validation bhi check krlega
 const [error,setError] = useState("")
 
-// eslint-disable-next-line no-useless-escape
 const passwordRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
 const validatePassword = (value)=> {
@@ -29,13 +28,13 @@ const handleChange=(e)=>{
   return (
     <div>
         <div className="flex justify-center" >
-                <label htmlFor="Password">Password</label>
+                <label htmlFor="Password" >Password</label>
                 <input
                     type="password"
                     placeholder="Enter Password"
                     onChange={handleChange}
                     value={password}
-                    className="border-solid border-[2px] rounded-lg ml-2 "
+                    className="border-solid border-[2px] border-green-700 w-[200px] h-[30px] rounded-md ml-2  "
                 />
           </div>
                 { error && <p className="text-red-600 text-[10px] " > {error} </p>}  
@@ -46,6 +45,6 @@ const handleChange=(e)=>{
 
 export default PasswordInput
 
-// Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:
-
-//          "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+PasswordInput.propTypes = {
+    onValidPassword : PropTypes.func.isRequired
+}

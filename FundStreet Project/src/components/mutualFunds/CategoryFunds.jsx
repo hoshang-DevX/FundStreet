@@ -1,5 +1,7 @@
 import { useEffect } from "react";
+
 import { useDispatch, useSelector} from "react-redux";
+
 import { fetchMutualFunds, fetchCategoryFunds } from "../../features/MutualFunds/mutualFundsThunk";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -7,6 +9,7 @@ function CategoryFunds() {
   const { category } = useParams(); 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { fundsByCategory, loading, error , categories} = useSelector((state) => state.mutualFunds);
   const data = categories
 
@@ -17,6 +20,7 @@ function CategoryFunds() {
   }, [dispatch]);
 
   useEffect(() => { 
+
     if (category) { 
       dispatch(fetchMutualFunds({ category })); // Fetch funds for selected category
     }
@@ -28,17 +32,21 @@ console.log('categroy/fund name ' , data[category].name)
   return (
     <div className="container mx-auto py-10 px-6">
       <h1 className="text-4xl font-extrabold text-center text-green-700 mb-6">
+
         {data[category-1].name} Funds
+
       </h1>
 
       {/* Category Navigation Buttons */}
       <div className="flex flex-wrap justify-center gap-3 mb-8">
+
         {Array.isArray(category) && category.map((cat) => (
           <button
             key={cat}
             onClick={() => navigate(`/mutual-funds/${cat}`)}
             className={`px-5 py-2 rounded-full font-medium transition duration-300 shadow-md ${
               category === cat.toLowerCase()
+
                 ? "bg-green-700 text-white"
                 : "bg-gray-200 text-gray-800 hover:bg-green-600 hover:text-white"
             }`}

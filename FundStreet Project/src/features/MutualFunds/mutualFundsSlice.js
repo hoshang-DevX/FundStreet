@@ -43,8 +43,10 @@ const mutualFundsSlice = createSlice({
       })
       .addCase(fetchCategoryFunds.fulfilled, (state, action) => {
         state.loading = false;
+
         console.log('payload' , action.payload)
         state.categories = action.payload?.data|| [];
+
       })
       .addCase(fetchCategoryFunds.rejected, (state, action) => {
         state.loading = false;

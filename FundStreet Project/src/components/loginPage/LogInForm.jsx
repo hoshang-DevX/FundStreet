@@ -51,7 +51,9 @@ const[showPasswordOtpForm,setShowPasswordOtpForm] = useState(false)
         const otpString = otp.join('')      // because the "otp" was in array 
         await dispatch(verifyOtp({mobile_no,  otpString })).unwrap()
         
+
         console.log('login successful !!')
+
         toast('Login Successful !!',{type : 'success',autoClose : 2000})
 
         setTimeout(() => {
@@ -91,7 +93,9 @@ const handleLogInWithPassword = async()=>{
             <>
 
     
+
       <form className="w-full max-h-full max-w-[100%] sm:max-w-[50%] h-[60%] border-solid border-[2px] p-8 border-green-600 rounded-[32px] shadow-2xl shadow-slate-500 mt-14 bg-white  "
+
         onSubmit={(e) => e.preventDefault()}>
       <header className="flex flex-col">
         <h2  className="flex flex-wrap font-semibold font-sans text-lg sm:text-xl md:text-3xl justify-center gap-[4px]" >Welcome to 
@@ -101,7 +105,7 @@ const handleLogInWithPassword = async()=>{
       </header>
         <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4 " >
-                <div className="flex mt-8 sm:mt-16 justify-center " >
+                <div className="flex mt-8 sm:mt-16 align-middle justify-center " >
                     <label htmlFor="mobile_no">Phone </label>
                 
                     <input
@@ -112,7 +116,7 @@ const handleLogInWithPassword = async()=>{
                         required
                         onChange={(e) => setMobile_no(e.target.value)}
                         placeholder="Enter Phone Number"
-                        className="border-solid border-[2px] rounded-lg ml-2  "
+                        className="border-solid border-[2px] border-green-700 w-[200px] h-[30px] rounded-md ml-2  "
                     />
 
                 </div>

@@ -6,12 +6,15 @@ import { useNavigate } from "react-router-dom";
 function MutualFunds() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { loading, error, categories} = useSelector((state) => state.mutualFunds);
+
   const [openFAQ, setOpenFAQ] = useState(null);
 
   useEffect(() => {
     dispatch(fetchCategoryFunds());
   }, [dispatch]);
+
 
   const category = categories;
   console.log('category in Mf page' ,category)
@@ -23,6 +26,7 @@ function MutualFunds() {
 
   const toggleFAQ = (index) => {
     setOpenFAQ(openFAQ === index ? null : index);
+
   };
 
   return (
@@ -67,13 +71,15 @@ function MutualFunds() {
       <section className="mt-12 text-center">
         <h2 className="text-3xl font-bold text-green-700">Explore Mutual Funds by Category</h2>
         <div className="flex justify-center gap-6 mt-6">
-          {category.map((category) => (
+
+          {category?.map((category) => (
             <button
-              key={category.id}
-              onClick={() => handleCategoryClick(category.id)}
+              key={category?.id}
+              onClick={() => handleCategoryClick(category?.id)}
               className="px-6 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 shadow-lg transform hover:scale-110 transition-all duration-300"
             >
-              {category.name}
+              {category?.name}
+
             </button>
           ))}
         </div>
