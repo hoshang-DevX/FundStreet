@@ -26,7 +26,6 @@ function MutualFunds() {
 
   const toggleFAQ = (index) => {
     setOpenFAQ(openFAQ === index ? null : index);
-
   };
 
   return (
@@ -71,6 +70,7 @@ function MutualFunds() {
       <section className="mt-12 text-center">
         <h2 className="text-3xl font-bold text-green-700">Explore Mutual Funds by Category</h2>
         <div className="flex justify-center gap-6 mt-6">
+
 
           {category?.map((category) => (
             <button
