@@ -36,7 +36,7 @@ export const sendOtp = createAsyncThunk(
             const response = await axios.post(`${baseurl}/api/v1/otp_user_auth`,{ mobile_no})
             const {data} = response.data
             if(data?.token){
-                sessionStorage.setItem("token",data.token)
+                localStorage.setItem("token",data.token)
             }
 
             return response.data                    // get this checked that is this returned data type is fine ? 
@@ -49,13 +49,15 @@ export const verifyOtp = createAsyncThunk(
     
     "auth/verifyOtp", async({mobile_no ,otpString},{rejectWithValue}) =>{
         try {
-            const token = sessionStorage.getItem("token")
+            const token = localStorage.getItem("token")
             const headers = token ? {Authorization : token} : {}    // also expected by the API
 
             const response = await axios.post(`${baseurl}/api/v1/otp_verification`, { mobile_no , otp : otpString} , {headers} )
             
             const {status , message , data} =  response.data
-            sessionStorage.setItem( "authToken" , data.token)        // requires key and value
+
+            localStorage.setItem( "token" , data.token)        // requires key and value
+
             return {user : data.credentials , token : data.token , message, status}
         } catch (error) {
             console.error("API Error:", error.response?.data || error.message);
@@ -76,7 +78,7 @@ export const logInWithPassword = createAsyncThunk(
             
             console.log('getting the data', response.data);
             const { data,status, message} = response.data
-            sessionStorage.setItem("token",data.token)
+            localStorage.setItem("token",data.token)
 
             return {user : data.credentials , token : data.token , message , status}
             // return response.data

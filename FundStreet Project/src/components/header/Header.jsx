@@ -1,10 +1,15 @@
+
+import { useSelector,useDispatch } from "react-redux";
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HeaderLeft from "./HeaderLeft";
 import SearchBar from "./SearchBar";
 
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
 
   useEffect(() => {
     // Function to close menu when clicking outside
@@ -23,7 +28,7 @@ function Header() {
   }, [menuOpen]);
 
   return (
-    <header className="bg-white shadow-md fixed top-0 w-full z-10 ">
+    <header className="bg-white shadow-md fixed top-0 w-full z-[100] ">
       <div className="flex items-center justify-between px-6 lg:px-16 h-[80px]">
         {/* Left Logo */}
         <HeaderLeft />
@@ -44,9 +49,20 @@ function Header() {
           <Link to="/mutual-funds" className="hover:text-green-800">
             Mutual Funds
           </Link>
-          <Link to="/login" className="hover:text-green-800">
-            Log In / Sign Up
-          </Link>
+
+          { isLoggedIn ? 
+            (<button onClick={handleLogOut} className="font-bold text-green-600 underline ">
+                {" "}
+                logout{" "}
+            </button> )
+          :
+          ( <Link to="/login" className="font-bold text-green-600 underline ">
+                {" "}
+                  logIn / SignUp{" "}
+            </Link> )
+            }
+
+
         </nav>
 
         {/* Mobile Menu Button */}
@@ -78,9 +94,19 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link to="/login" onClick={() => setMenuOpen(false)}>
-                Log In / Sign Up
-              </Link>
+
+            { isLoggedIn ? 
+            (<button onClick={handleLogOut} className="font-bold text-green-600 underline ">
+                {" "}
+                logout{" "}
+            </button> )
+          :
+          ( <Link to="/login" className="font-bold text-green-600 underline ">
+                {" "}
+                  logIn / SignUp{" "}
+            </Link> )
+            }
+
             </li>
           </ul>
         </nav>

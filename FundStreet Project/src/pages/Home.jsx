@@ -1,19 +1,43 @@
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import SIPCalculator from "../components/mutualFunds/SIPCalculator";
 
+
 function Home() {
+  const navigate = useNavigate()
+
+  const isLoggedIn = useSelector(state => state.auth.isAuthenticated)
+  console.log(isLoggedIn)
+
+   const handleGetStarted =() => {
+    { isLoggedIn ? navigate('/mutual-funds') : navigate('/login') }
+  }
+  
   return (
     <div className="text-gray-900">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#52be93] to-emerald-700 text-white text-center py-20 px-6 rounded-3xl shadow-xl">
+
+      <section className=" relative z-10 bg-gradient-to-r from-[#52be93] to-emerald-700 text-white text-center py-20 px-6 rounded-3xl shadow-xl">
+      <video src="/Video.mp4" autoPlay muted playsInline loop={true} className="absolute top-0 left-0 w-full h-full object-cover z-0 " />
+      
+
+      <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-0"></div>
+        <div className="relative z-10" >
+
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 animate-fade-in">
           Welcome to <span className="text-yellow-300">FundStreet</span>
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
           Your trusted platform for investing in mutual funds with ease and confidence.
         </p>
-        <button className="mt-6 px-8 py-4 bg-white text-green-700 font-semibold rounded-lg shadow-md hover:bg-gray-200 hover:scale-105 transition-all duration-300">
+
+        <button className="mt-6 px-8 py-4 bg-white text-green-700 font-semibold rounded-lg shadow-md hover:bg-gray-200 hover:scale-105 transition-all duration-300"
+          onClick = {handleGetStarted}
+        >
+
           Get Started
         </button>
+        </div>
       </section>
 
       {/* Why Choose Us Section */}
@@ -52,7 +76,9 @@ function Home() {
       </section>
 
       {/* Investment Calculator Section */}
-      <section className="py-20 px-6 max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center justify-around gap-8">
+
+      <section className=" max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center justify-around gap-8">
+
         {/* New Heading and Description */}
         <div className="text-center md:text-left max-w-lg">
           <h2 className="text-3xl font-semibold text-green-700">
@@ -64,13 +90,17 @@ function Home() {
         </div>
 
         {/* SIP Calculator Component */}
-        <div className="bg-white p-8 rounded-xl shadow-lg">
+
+        <div className="bg-white w-[80%] md:w-[60%] p-8 rounded-xl shadow-lg">
+
           <SIPCalculator />
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-[#52be93] py-20 px-6 text-white rounded-3xl max-w-7xl mx-auto mb-12 shadow-lg">
+
+      <section className="bg-[#52be93] py-20 px-6 text-white rounded-3xl max-w-7xl mx-auto mb-12 mt-12 shadow-lg">
+
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
           What Our Users Say
         </h2>
