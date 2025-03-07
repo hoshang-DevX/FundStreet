@@ -51,7 +51,9 @@ const[showPasswordOtpForm,setShowPasswordOtpForm] = useState(false)
         const otpString = otp.join('')      // because the "otp" was in array 
         await dispatch(verifyOtp({mobile_no,  otpString })).unwrap()
         
+
         console.log('login successful !!')
+
         toast('Login Successful !!',{type : 'success',autoClose : 2000})
 
         setTimeout(() => {
@@ -91,7 +93,9 @@ const handleLogInWithPassword = async()=>{
             <>
 
     
+
       <form className="w-full max-h-full max-w-[100%] sm:max-w-[50%] h-[60%] border-solid border-[2px] p-8 border-green-600 rounded-[32px] shadow-2xl shadow-slate-500 mt-14 bg-white  "
+
         onSubmit={(e) => e.preventDefault()}>
       <header className="flex flex-col">
         <h2  className="flex flex-wrap font-semibold font-sans text-lg sm:text-xl md:text-3xl justify-center gap-[4px]" >Welcome to 

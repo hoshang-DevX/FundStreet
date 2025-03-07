@@ -1,20 +1,14 @@
+
 import { useSelector,useDispatch } from "react-redux";
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HeaderLeft from "./HeaderLeft";
 import SearchBar from "./SearchBar";
-import { logOut } from "../../features/authSlice";
 
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const isLoggedIn = useSelector(state => state.auth.isAuthenticated)
-  console.log('isAuthecticated status', isLoggedIn)
-  const dispatch = useDispatch()
-
-  function handleLogOut (){
-    dispatch(logOut())
-  }
 
 
   useEffect(() => {
@@ -55,6 +49,7 @@ function Header() {
           <Link to="/mutual-funds" className="hover:text-green-800">
             Mutual Funds
           </Link>
+
           { isLoggedIn ? 
             (<button onClick={handleLogOut} className="font-bold text-green-600 underline ">
                 {" "}
@@ -66,6 +61,7 @@ function Header() {
                   logIn / SignUp{" "}
             </Link> )
             }
+
 
         </nav>
 
@@ -98,6 +94,7 @@ function Header() {
               </Link>
             </li>
             <li>
+
             { isLoggedIn ? 
             (<button onClick={handleLogOut} className="font-bold text-green-600 underline ">
                 {" "}
@@ -109,6 +106,7 @@ function Header() {
                   logIn / SignUp{" "}
             </Link> )
             }
+
             </li>
           </ul>
         </nav>

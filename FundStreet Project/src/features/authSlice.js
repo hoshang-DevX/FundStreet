@@ -23,7 +23,6 @@ const authSlice = createSlice({
             state.otpSent = false,
             state.otpVerified = false,
             state.isAuthenticated = false
-            localStorage.removeItem('token')
         }
     },
 

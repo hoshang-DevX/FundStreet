@@ -55,7 +55,9 @@ export const verifyOtp = createAsyncThunk(
             const response = await axios.post(`${baseurl}/api/v1/otp_verification`, { mobile_no , otp : otpString} , {headers} )
             
             const {status , message , data} =  response.data
-            localStorage.setItem( "authToken" , data.token)        // requires key and value
+
+            localStorage.setItem( "token" , data.token)        // requires key and value
+
             return {user : data.credentials , token : data.token , message, status}
         } catch (error) {
             console.error("API Error:", error.response?.data || error.message);

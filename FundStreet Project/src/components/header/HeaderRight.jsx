@@ -27,7 +27,7 @@ function HeaderRight() {
           </Link>
         </div>
         <div>
-          <Link to="/login" className="font-bold text-green-600">
+          <Link to="/about" className="font-bold text-green-600">
             {" "}
             logIn / SignUp{" "}
           </Link>
