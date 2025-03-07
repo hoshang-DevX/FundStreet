@@ -5,7 +5,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/Footer/Footer";
 import MutualFunds from "./pages/MutualFunds"
 import CategoryFunds from "./components/mutualFunds/CategoryFunds"
-import LogInForm from "./components/loginPage/logInForm";
+import { LogInForm } from "./components/loginPage/logInForm";
 
 // import TopMovingBanner from "./components/MovingBanner/TopMovingBanner";
 
@@ -23,7 +23,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/mutual-funds" element={<MutualFunds />} />
             <Route path="/mutual-funds/:category" element={<CategoryFunds />} />
-            <Route path="/login" element={LogInForm} />
+            <Route path="/login" element={<LogInForm/>} />
           </Routes>
         </main>
 

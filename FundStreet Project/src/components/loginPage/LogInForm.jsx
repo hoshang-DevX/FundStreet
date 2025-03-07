@@ -1,3 +1,4 @@
+
 import  { useState } from "react";
 import { useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +15,7 @@ import MethodToggleButton from "./MethodToggleButton";
 import PasswordOtpForm from "./PasswordOtpForm";
 
 
-function LogInForm() {
+export   function LogInForm() {
 const [mobile_no, setMobile_no] = useState("+91");
 const [otp,setOtp]  = useState(Array(6).fill(''))      // reqd array in OTPInput.jsx   - now here convert to string
 const [password,setPassword] = useState('')
@@ -161,4 +162,4 @@ const handleLogInWithPassword = async()=>{
   );
 }
 
-export default LogInForm;
+
