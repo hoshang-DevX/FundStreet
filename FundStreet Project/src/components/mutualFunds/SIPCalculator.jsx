@@ -32,7 +32,7 @@ const SIPCalculator = () => {
   ];
 
   return (
-    <div className="bg-white p-3 sm:p-4 rounded-lg shadow-md w-full max-w-md mx-auto">
+    <div className="bg-slate-50 p-3 sm:p-4 rounded-lg shadow-md w-full max-w-md mx-auto">
       {/* Tab Navigation */}
       <Tabs
         value={tab}
@@ -52,9 +52,9 @@ const SIPCalculator = () => {
         </label>
         <Slider
           value={investment}
-          min={1000}
+          min={500}
           max={50000}
-          step={1000}
+          step={500}
           onChange={(e, val) => setInvestment(val)}
           className="w-full sm:w-[80%] mx-auto"
         />

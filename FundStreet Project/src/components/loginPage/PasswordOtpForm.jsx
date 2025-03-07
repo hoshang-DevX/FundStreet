@@ -5,7 +5,7 @@ export default function PasswordOtpForm({handleVerifyOtp ,otp,setOtp}){
 
     return(
         <div className="flex justify-center" >
-        <div className="w-full max-h-full max-w-[100%] sm:max-w-[40%] h-[50%] border-solid border-[10px] border-green-600 rounded-[32px] shadow-2xl shadow-slate-500 mt-40  " >
+        <div className="w-full max-h-full max-w-[100%] md:max-w-[80%] h-[70%] border-solid border-[2px] border-green-600 bg-white rounded-[32px] shadow-2xl shadow-slate-500 mt-40  " >
         <div className="gap-10 m-8 ">
             <h2 className="flex flex-wrap font-semibold font-sans text-lg sm:text-xl md:text-3xl justify-center gap-[4px] "
                  >Welcome to   <span className="text-green-600 text-xl sm:text-xl md:text-4xl " > FUNDSTREET</span></h2>

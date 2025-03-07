@@ -34,7 +34,7 @@ function Header() {
   }, [menuOpen]);
 
   return (
-    <header className="bg-white shadow-md fixed top-0 w-full z-10 ">
+    <header className="bg-white shadow-md fixed top-0 w-full z-[100] ">
       <div className="flex items-center justify-between px-6 lg:px-16 h-[80px]">
         {/* Left Logo */}
         <HeaderLeft />
@@ -56,12 +56,12 @@ function Header() {
             Mutual Funds
           </Link>
           { isLoggedIn ? 
-            (<button onClick={handleLogOut} className="font-bold text-green-600">
+            (<button onClick={handleLogOut} className="font-bold text-green-600 underline ">
                 {" "}
-                logOut{" "}
+                logout{" "}
             </button> )
           :
-          ( <Link to="/login" className="font-bold text-green-600">
+          ( <Link to="/login" className="font-bold text-green-600 underline ">
                 {" "}
                   logIn / SignUp{" "}
             </Link> )
@@ -99,12 +99,12 @@ function Header() {
             </li>
             <li>
             { isLoggedIn ? 
-            (<button onClick={handleLogOut} className="font-bold text-green-600">
+            (<button onClick={handleLogOut} className="font-bold text-green-600 underline ">
                 {" "}
-                logOut{" "}
+                logout{" "}
             </button> )
           :
-          ( <Link to="/login" className="font-bold text-green-600">
+          ( <Link to="/login" className="font-bold text-green-600 underline ">
                 {" "}
                   logIn / SignUp{" "}
             </Link> )

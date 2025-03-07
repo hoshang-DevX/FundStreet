@@ -1,10 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 // import {getData, getCategoryData} from "../../services/Api";
 import axios  from "axios";
-// import { useParams } from "react-router-dom";
 
  const baseurl = import.meta.env.VITE_PUBLIC_BASE_URL
-//  const params = useParams()
  
  export const fetchMutualFunds = createAsyncThunk(
    "mutualFunds/fetchMutualFunds",
@@ -64,9 +62,12 @@ export const fetchCategoryFunds = createAsyncThunk(
       if (!response.data || !response.data.data) {
         throw new Error("Invalid API response");
       }
+      const {data} = response.data
+      const categories = response.data.data.map(item => item.id); 
+      console.log('categories',categories)
 
-      return response.data.data;
-
+      return { categories,data }; 
+      
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to fetch mutual funds");
     }

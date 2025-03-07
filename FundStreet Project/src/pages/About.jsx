@@ -20,13 +20,13 @@ function About() {
       </section>
 
       {/* Meet Our Team */}
-      <section className="bg-[#52be93] py-20 px-6 rounded-3xl shadow-lg">
+      <section className="bg-[#52be93] py-20 px-6 mb-8 rounded-3xl shadow-lg">
         <h2 className="text-4xl font-bold text-white text-center mb-10">Meet Our Team</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
-            { name: "Name", role: "CEO & Founder" },
-            { name: "Name", role: "Chief Investment Officer" },
-            { name: "Name", role: "Head of Research" },
+            { name: "Hoshang", role: "CEO & Founder" },
+            { name: "Ayush Bhat", role: "Chief Investment Officer" },
+            { name: "Manas Khanna", role: "Head of Research" },
           ].map((member, index) => (
             <div
               key={index}
