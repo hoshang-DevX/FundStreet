@@ -1,11 +1,10 @@
 import { useState } from "react"
+import PropTypes from 'prop-types'
 
-// eslint-disable-next-line react/prop-types
 function PasswordInput({onValidPassword}) {
 const [password,setPassword] = useState("");    // seedha passowrd ko password mai daalne ke bajaye ek func ke through  daalenge jo validation bhi check krlega
 const [error,setError] = useState("")
 
-// eslint-disable-next-line no-useless-escape
 const passwordRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
 const validatePassword = (value)=> {
@@ -46,6 +45,6 @@ const handleChange=(e)=>{
 
 export default PasswordInput
 
-// Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:
-
-//          "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+PasswordInput.propTypes = {
+    onValidPassword : PropTypes.func.isRequired
+}
