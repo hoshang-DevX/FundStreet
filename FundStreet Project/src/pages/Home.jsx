@@ -18,7 +18,7 @@ function Home() {
       {/* Hero Section */}
 
       <section className=" relative z-10 bg-gradient-to-r from-[#52be93] to-emerald-700 text-white text-center py-20 px-6 rounded-3xl shadow-xl">
-      {/* <video src="/Video.mp4" autoPlay muted playsInline loop={true} className="absolute top-0 left-0 w-full h-full object-cover z-0 " /> */}
+      <video src="/Video.mp4" autoPlay muted playsInline loop={true} className="absolute top-0 left-0 w-full h-full object-cover z-0 " />
       
 
       <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-0"></div>
