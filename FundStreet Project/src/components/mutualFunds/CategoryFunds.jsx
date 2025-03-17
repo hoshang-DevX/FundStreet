@@ -59,7 +59,8 @@ console.log('categroy/fund name ' , data[category].name)
       {/* Error Message */}
       {error && (
         <p className="text-center text-red-600 mt-4 bg-red-100 border border-red-400 p-3 rounded-lg">
-           Error: {error}
+           {/* Error: {error} */}
+            Cannot retrieve funds 
         </p>
       )}
 
@@ -85,7 +86,7 @@ console.log('categroy/fund name ' , data[category].name)
           ))
         ) : (
           <p className="text-center text-gray-500 col-span-full text-lg">
-            No funds available for <span className="font-semibold">{category}</span>.
+            No funds available for <span className="font-semibold">{data[category-1].name}</span>.
           </p>
         )}
       </div>
